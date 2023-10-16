@@ -1,1 +1,1 @@
-print("Ahorcado")
+print("ssss")
