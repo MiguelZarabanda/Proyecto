@@ -9,10 +9,8 @@ JuegoFrame = Frame(raiz)
 JuegoFrame.config(width=1000, height=600, relief="sunken", bd=15)
 JuegoFrame.grid_propagate(False)
 JuegoFrame.pack()
-
-Label(JuegoFrame,text="Introduce una letra", font=("Verdana",24)).grid(row=0, column=0, padx=10, pady=10)
-Letra = Entry(JuegoFrame, width=1, font=("Verdana", 24)).grid(row=0, column=1, padx=10, pady=10)
-
+Titulo = Label(JuegoFrame, text="Juego del Ahorcado", font=("Verdana", 24), justify="center")
+Titulo.pack()
 
 def TipoPalabra(Archivo, Valor):
     Tipo = []
