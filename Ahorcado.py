@@ -3,14 +3,34 @@ import csv
 from tkinter import *
 
 raiz = Tk()
-raiz.title("Ahorcado")
-raiz.config(width=1000, height=600, bg="blue", relief="groove", bd=10)
-JuegoFrame = Frame(raiz)
-JuegoFrame.config(width=1000, height=600, relief="sunken", bd=15)
-JuegoFrame.grid_propagate(False)
-JuegoFrame.pack()
-Titulo = Label(JuegoFrame, text="Juego del Ahorcado", font=("Verdana", 24), justify="center")
-Titulo.pack()
+raiz.title("Juegos")
+raiz.geometry("1000x600")
+
+def cambiar_ventana():
+    raiz.destroy()
+    return Tk()
+
+Marco1 = Frame(raiz)
+Marco1.pack()
+Label(Marco1, text="Juegos FRIV", font=("Verdana", 24)).pack()
+
+Marco2 = Frame(raiz)
+Marco2.pack()
+Button(Marco2, text="Buscaminas", font=("Verdana", 16),width=10, height=3).grid(row=1, column=0)
+Button(Marco2, text="Ahorcado", font=("Verdana", 16),width=10, height=3, command=cambiar_ventana).grid(row=1, column=1)
+
+"""
+marco = Frame(raiz)
+marco.pack()
+
+Label(marco, text="Juego del Ahorcado", font=("Verdana", 24),fg="red").pack()
+
+marco2 = Frame(raiz)
+marco2.pack(anchor="w")
+
+Label(marco2, text="Introduzca una letra", font=("Verdana", 24)).grid(row=0, column=0)
+Letra = Entry(marco2, width=1, font=("Verdana", 24)).grid(row=0, column=1)
+"""
 
 def TipoPalabra(Archivo, Valor):
     Tipo = []
