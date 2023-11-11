@@ -22,8 +22,11 @@ self.bandera = pygame.transform.scale(bandera, (self.width, self.width))    #Ima
 pygame.mixer.init()                                                                     
 
 #buscaminas
+Botones = []
+Espacio=-1
 Disbombas = 
-banderasbomba = 
+banderasbomba = 5
+bandera = False
 Lbomb = []
 self.banderas_restantes = 0
 self.banderas_max = 0
@@ -34,17 +37,8 @@ self.minasA_dt = {}
 self.ColocarMinas()
 self.cont_band = 0
 
-def Crcuadricula =(self):
-  x = s
-
 # Faltan cosas pq pues estas son las variables y no tengo idea de cuantas variables vamos a poner XD
 
- def tablero (filas,columnas,va 
-
-def bombasran (self):
-  self.bombasran = {}
-  self.Nbanderas = 0
-  self.Mbanderas = 0
 
 
 
@@ -54,6 +48,7 @@ bomb1 = 0
 bomb2 = 0
 bomb3 = 0 
 bombo4 = 0
+
 def Bombran ():
 bomb = random.randrange():
 bomb1 = random.randrange():
@@ -68,6 +63,26 @@ print(bomb2)
 print(bomb3)
 print(bomb4)
 def casillas  ():
+  
 def banderas ():
+  global bandera
+  bandera = True 
+banderaImg=PhotoImage(file="img/bandera.png")
+banderaImgSlot=PhotoImage(file="img/banderaSlot.png")
+def ponerbandera():
+
+  if bandera and banderasbomba>0:
+    banderasbomba = banderasbomba-1
+    contadorBanderas.config(text="Banderas disponibles: " + str(banderasDisponibles))
+    Botones[Espacio].config(image=banderaImgSlot, width=64, height=65)
+    print("La bandera se puso en")
+    print (Espacio)
+    bandera = False
+    #contador y poner
+contadorBanderas=Label(frame, text="Banderas disponibles: " + str(banderasbomba), font=("Arial 15"))
+contadorBanderas.grid(column=6, row=0, columnspan=5)
+Teclaband=Button(frame, text=" ", image=banderaImg, command=lambda:presionarBandera())
+Teclaband.grid(column=5, row=0)
+    
 
   
