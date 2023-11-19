@@ -3,6 +3,36 @@ from tkinten import messagebox
 import random 
 import time
 import pygame
+
+
+
+def Datos (val):
+  Espacios = []
+  for i in range(tamaño)
+    Espacios.append([val] * tamaño)
+  return Espacios
+def Tableroran():
+  icono = []
+  minas = 0
+  for x in range(tamaño):
+    for y in range (altura):
+      if minas < NMINES:
+        icons.append(#minas, verde) # no tengo idea 
+          minas += 1
+      else: 
+        icons.append(#square, white? #no tengo idea 
+
+  random.shuffle(icons) 
+  tablero = []
+  for x in range (tamaño)
+  columna = []
+  for y in range (altura)
+    colum.append(icon[0])
+    del icons[0]
+  tablero.append(columna)
+  
+        
+  
 # se ponen mas cosas pero no se exactamente cuales
 
 
