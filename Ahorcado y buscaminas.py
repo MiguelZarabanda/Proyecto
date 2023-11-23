@@ -96,7 +96,14 @@ def Nminas(self):
   self.banderas_max = 0
   for i in self.coordenadas:
     self.minas_d[i] = self.minas_d.get(i, False)
-    
+  rng = random.random()
+  while self.banderas_restantes < len (self.minas_d) // 5:
+    M = rng.randrange (0, len(self.coordenadas))
+    if self.minas_d.get(self.coordenadas[M] == False:
+       self.minas_d[self.coordenadas[M]] = True
+       self.banderas_restantes +=1
+       self.banderas_max +=1
+#minas                        
     
 /////////////////////////////////////////////////////////////////////
 
