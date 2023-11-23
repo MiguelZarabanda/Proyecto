@@ -31,12 +31,13 @@ def Tableroran():
   tablero.append(columna)
   
 /////////////////////////////////////////////////////////////////////////////////////////
+class game:
   def __init__(self, Altura, tamaño)
     self.ancho = int(input("Numero entre 4 a 20 :"))
-    while self.ancho < 4 or self.size > 20:
+    while self.ancho < 4 or self.ancho > 20:
         print("La cuadricula debe ser mayor que 4 y menor que 20\n")
         self.ancho = int(input("Ingrese el tamaño de la cuadricula, debe ser mayor que 4:"))
-    self.grosor = 400//self.ancho   
+  self.grosor = 400//self.ancho   
 # se ponen mas cosas pero no se exactamente cuales
 
 
@@ -69,6 +70,34 @@ def Tableroran():
   self.minasA_dt = {}                                                         #Diccionario con el valor del nimero de minas aledañas a un cuadro
   self.ContarCuadros()  
 # Faltan cosas pq pues estas son las variables y no tengo idea de cuantas variables vamos a poner XD
+def Cuadricula(self):
+  x = self.centro[0] - (self.ancho * (self.grosor + 5) / 2)
+  y = self.centro[1] - (self.ancho * (self.grosor +5) / 2)
+  for i in range (self.ancho):
+    self.coord[(x,y)] = self.coord.get((x,y),(192, 192, 192))
+    self.estado[(x,y)] = False 
+    self.coordenadas.append((x,y))
+    x += self.grosor + 5
+  x -= (self.grosor + 5) * self.ancho
+  y += self.grosor + 5
+#cuadro XD
+def Mostrarcuad(self):
+  for i in range self.coordenadas:
+    color = self.coord.get(i)
+    x = i[0]
+    y = i[1]
+    pygame.draw.polygon(self.ventana, (224, 224, 224), [(x + self., y),(x + self.grosor + 2.5, y - 2.5),  (x - 2.5, y - 2.5), (x - 2.5, y + self.grosor + 2.5), (x, y + self.grosor), (x, y)])                                                        #Borde superior e izquierdo de cada cuadro
+    pygame.draw.polygon(self.ventana, (96, 96, 96), [(x, y + self.grosor), (x - 2.5, y + self.grosor + 2.5), (x + self.grosor + 2.5, y + self.grosor + 2.5), (x + self.grosor + 2.5, y - 2.5), (x + self.grosor, y), (x + self.grosor, y + self.grosor)])       #Borde inferior y derecho de cada cuadro
+    pygame.draw.rect(self.ventana, (color), (x, y, self.grosor, self.grosor))    
+#mostrar
+def Nminas(self):
+  self.minas_d = {}
+  self.banderas_restantes = 0
+  self.banderas_max = 0
+  for i in self.coordenadas:
+    self.minas_d[i] = self.minas_d.get(i, False)
+    
+    
 /////////////////////////////////////////////////////////////////////
 
 
