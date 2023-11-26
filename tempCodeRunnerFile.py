@@ -1,2 +1,0 @@
-
-marco = Frame(raiz)
