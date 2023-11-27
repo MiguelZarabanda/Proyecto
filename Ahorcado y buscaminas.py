@@ -11,10 +11,9 @@ class game:
         print("La cuadricula debe ser mayor que 4 y menor que 20\n")
         self.ancho = int(input("Ingrese el tamaño de la cuadricula, debe ser mayor que 4:"))
   self.grosor = 400//self.ancho   
-# se ponen mas cosas pero no se exactamente cuales
 
 
-#pygame, pues segun el proyecto del rosario esto es necesario por pygame
+#pygame
   self.fuente = pygame.font.SysFont('newyorkitalicttf', self.width, True)     #Numeros
   self.temp = pygame.font.SysFont('newyorkitalicttf', 20, True)               #Tiempo
   self.msg = pygame.font.SysFont('newyorkitalicttf', 30, True)                #Mensaje de victoria y derrota
@@ -42,7 +41,7 @@ class game:
   self.ColocarMinas()                                                         
   self.minasA_dt = {}                                                         #Diccionario con el valor del nimero de minas aledañas a un cuadro
   self.ContarCuadros()  
-# Faltan cosas pq pues estas son las variables y no tengo idea de cuantas variables vamos a poner XD
+
 def Cuadricula(self):
   x = self.centro[0] - (self.ancho * (self.grosor + 5) / 2)
   y = self.centro[1] - (self.ancho * (self.grosor +5) / 2)
@@ -123,11 +122,39 @@ def ContarCuadros(self):
     counter += 1
     #minas alrededor
 def descubrir(self, i):
-  val = self.minasA_dt.get(i)
-  pos = [i[0] + (self.grosor // 5), i[1]]
-  self.coord[i] = (96,96,96)
-  self.Mostrarcuad()
-  stringgggggggggggggg
+    val = self.minasA_dt.get(i)
+    pos = [i[0] + (self.grosor // 5), i[1]]
+    self.coord[i] = (96,96,96)
+    self.Mostrarcuad()
+     if str(val) == "1":                                     #Se debe convertir el 1 a str o si no va a contar el True de las minas como 1
+            val = self.fuente.render(str(val), 1, (0,128,255))
+            self.ventana.blit(val, pos)
+        if val == 2:
+            val = self.fuente.render(str(val), 1, (0,204,0))
+            self.ventana.blit(val, pos)
+        if val == 3:
+            val = self.fuente.render(str(val), 1, (255,0,0))
+            self.ventana.blit(val, pos)
+        if val == 4:
+            val = self.fuente.render(str(val), 1, (0,0,204))
+            self.ventana.blit(val, pos)
+        if val == 5:
+            val = self.fuente.render(str(val), 1, (102,51,0))
+            self.ventana.blit(val, pos)
+        if val == 6:
+            val = self.fuente.render(str(val), 1, (0,255,255))
+            self.ventana.blit(val, pos)
+        if val == 7:
+            val = self.fuente.render(str(val), 1, (51,0,0))
+            self.ventana.blit(val, pos)
+        if val == 8:
+            val = self.fuente.render(str(val), 1, (64,64,64))
+            self.ventana.blit(val, pos)
+        if val == 9:
+            val = self.fuente.render(str(val), 1, (0,0,0))
+            self.ventana.blit(val, pos)
+        if i in self.coordenadas:
+            self.coordenadas.remove(i)  
 
 def Poner_QuitarBand(self,pos):
   for i in self.coord:
@@ -222,7 +249,7 @@ def Respuestas(self):
       if self.estado[i] == True and self.minas_d[i] == False:
         pygame.draw.line(self.ventana, (0,0,0), (i[0], i[1]), (i[0] + self.grosor, i[1] + self.grosor), (5))
         pygame.draw.line(self.ventana, (0,0,0), (i[0] + self.grosor, i[1]), (i[0], i[1] + self.grosor), (5))
-/////////////////////////////////////////////////////////////////////
+
 
 
 
