@@ -90,7 +90,7 @@ def Mostrarcuad(self):
     pygame.draw.polygon(self.ventana, (96, 96, 96), [(x, y + self.grosor), (x - 2.5, y + self.grosor + 2.5), (x + self.grosor + 2.5, y + self.grosor + 2.5), (x + self.grosor + 2.5, y - 2.5), (x + self.grosor, y), (x + self.grosor, y + self.grosor)])       #Borde inferior y derecho de cada cuadro
     pygame.draw.rect(self.ventana, (color), (x, y, self.grosor, self.grosor))    
 #mostrar
-def Nminas(self):
+def Colocarminas(self):
   self.minas_d = {}
   self.banderas_restantes = 0
   self.banderas_max = 0
@@ -103,8 +103,74 @@ def Nminas(self):
        self.minas_d[self.coordenadas[M]] = True
        self.banderas_restantes +=1
        self.banderas_max +=1
-#minas                        
-    
+#minas
+def seguro (self, pos):
+  for i in self.coord:
+    if pos[0] >= i[0] and pos[0] <= i[0] + self.grosor and pos[1] >= i[1] and pos[1] <= i[1] + self.grosor:
+      while self.minasA_dt[i] != 0:
+        self.Colocarminas()
+        self.ContarCuadros()
+      return 1
+  return 0
+#no perder
+def ContarCuadros(self):
+  self.minasA_dt = {}
+  counter = 0
+  for i in self.minas_d
+    minasC = 0
+    y = self.coordenadas[counter]
+    if self.minas_d[i] == True:
+      self.minasA_dt[i] = True
+    else: 
+      if (y[0] + self.grosor + 5 ,y[1]) in self.minas_d:
+        if self.minas_d[(y[0] + self.grosor + 5 ,y[1])] == True:
+          minasC += 1
+      if (y[0] + self.grosor + 5 ,y[1] + self.grosor + 5 ) in self.minas_d:            
+        if self.minas_d[(y[0] + self.grosor + 5 ,y[1] + self.grosor + 5 )] == True:
+          minasC += 1
+      if (y[0],y[1] + self.grosor + 5 ) in self.minas_d:                              
+        if self.minas_d[(y[0],y[1] + self.grosor + 5 )] == True:
+          minasC += 1
+      if (y[0] - self.grosor - 5 ,y[1] + self.grosor + 5 ) in self.minas_d:             
+        if self.minas_d[(y[0] - self.grosor - 5 ,y[1] + self.grosor + 5 )] == True:
+          minasC += 1
+      if (y[0] - self.grosor - 5 ,y[1]) in self.minas_d:                              
+        if self.minas_d[(y[0] - self.grosor - 5 ,y[1])] == True:
+          minasC += 1
+      if (y[0] - self.grosor - 5 ,y[1] - self.grosor - 5 ) in self.minas_d:             
+        if self.minas_d[(y[0] - self.grosor - 5 ,y[1] - self.grosor - 5 )] == True:
+          minasC += 1
+      if (y[0],y[1] - self.grosor - 5 ) in self.minas_d:                               
+        if self.minas_d[(y[0],y[1] - self.grosor - 5 )] == True:
+          minasC += 1
+      if (y[0] + self.grosor + 5 ,y[1] - self.grosor - 5 ) in self.minas_d:             
+        if self.minas_d[(y[0] + self.grosor + 5 ,y[1] - self.grosor - 5 )] == True:
+          minasC += 1 
+      self.minasA_dt[i] = self.minasA_dt.get(i, minasC)
+    counter += 1
+    #minas alrededor
+def descubrir(self, i):
+  val = self.minasA_dt.get(i)
+  pos = [i[0] + (self.grosor // 5), i[1]]
+  self.coord[i] = (96,96,96)
+  self.Mostrarcuad()
+  stringgggggggggggggg
+
+def Poner_QuitarBand(self,pos):
+  for i in self.coord:
+      if pos[0] >= i[0] and pos[0] <= i[0] + self.grosor and pos[1] >= i[1] and pos[1] <= i[1] + self.grosor:
+        pos = [i[0],i[1]]
+        if self.estado[i] == False:
+          if self.Fbanderas != 0:
+            if i in self.coordenadas:
+              self.coordenadas.remove(i)
+              self.ventana.blit(self.bandera, pos)
+              self.Fbanderas -=1
+              self.estado [i] = True
+            if self.minasA_dt[i] == True:
+              self.Nbanderas +=1
+            break
+            
 /////////////////////////////////////////////////////////////////////
 
 
