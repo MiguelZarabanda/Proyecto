@@ -4,33 +4,6 @@ import random
 import time
 import pygame
 
-
-def Datos (val):
-  Espacios = []
-  for i in range(tamaño)
-    Espacios.append([val] * tamaño)
-  return Espacios
-def Tableroran():
-  icono = []
-  minas = 0
-  for x in range(tamaño):
-    for y in range (altura):
-      if minas < NMINES:
-        icons.append(#minas, verde) # no tengo idea 
-          minas += 1
-      else: 
-        icons.append(#square, white? #no tengo idea 
-
-  random.shuffle(icons) 
-  tablero = []
-  for x in range (tamaño)
-  columna = []
-  for y in range (altura)
-    colum.append(icon[0])
-    del icons[0]
-  tablero.append(columna)
-  
-/////////////////////////////////////////////////////////////////////////////////////////
 class game:
   def __init__(self, Altura, tamaño)
     self.ancho = int(input("Numero entre 4 a 20 :"))
@@ -170,52 +143,90 @@ def Poner_QuitarBand(self,pos):
             if self.minasA_dt[i] == True:
               self.Nbanderas +=1
             break
-            
+      else: 
+        self.coordenadas.append(i)
+        self.Fbanderas +=1
+        self.estado[i] = False
+        if str(self.minasA_dt[i]) == "True":
+          self.Nbanderas -=1
+        break
+#banderas
+  def ejecucion(self,pos):
+    for i in self.coord:
+      if pos[0] >= i[0] and pos[0] <= i[0] + self.grosor and pos[1] >= i[1] and pos[1] <=i[1] + self.grosor:
+        if self.estado[i]  != True:
+          if self.minas_d[i] == True:
+            pos = [i[0], i[1]]
+            self.ventana.blit(self.mina,pos)
+            pygame.mixer.music.play()
+            self.est = False
+          else:
+            self.descubrir(i)
+             if self.minasA_dt[i] == 0:
+              self.minasaA_dt[i] = "0"
+              
+              if (i[0] + self.grosor + 5 , i[1]) in self.minasA_dt:
+                                a = self.minasA_dt[(i[0] + self.grosor + 5 , i[1])]
+                                self.descubrir((i[0] + self.grosor + 5 , i[1]))
+                                if a == 0:
+                                    self.ejecucion((i[0] + self.grosor + 5 , i[1]))                      #Si el valor de la casilla es 0 repite la ejecucion con esa casilla
+                            if (i[0] + self.grosor + 5 ,i[1] + self.grosor + 5 ) in self.minas_d:
+                                a = self.minasA_dt[(i[0] + self.grosor + 5 ,i[1] + self.grosor + 5 )]
+                                self.descubrir((i[0] + self.grosor + 5 ,i[1] + self.grosor + 5 ))
+                                if a == 0:
+                                    self.ejecucion((i[0] + self.grosor + 5 ,i[1] + self.grosor + 5 ))     #Si el valor de la casilla es 0 repite la ejecucion con esa casilla     
+                            if (i[0], i[1] + self.grosor + 5 ) in self.minasA_dt:
+                                a = self.minasA_dt[(i[0], i[1] + self.grosor + 5 )]
+                                self.descubrir((i[0], i[1] + self.grosor + 5 ))
+                                if a == 0:
+                                    self.ejecucion((i[0], i[1] + self.grosor + 5 ))                      #Si el valor de la casilla es 0 repite la ejecucion con esa casilla
+                            if (i[0] - self.grosor - 5 ,i[1] + self.grosor + 5 ) in self.minas_d:
+                                a = self.minasA_dt[(i[0] - self.grosor - 5 ,i[1] + self.grosor + 5 )]
+                                self.descubrir((i[0] - self.grosor - 5 ,i[1] + self.grosor + 5 ))
+                                if a == 0:
+                                    self.ejecucion((i[0] - self.grosor - 5 ,i[1] + self.grosor + 5 ))     #Si el valor de la casilla es 0 repite la ejecucion con esa casilla
+                            if (i[0] - self.grosor - 5 , i[1]) in self.minasA_dt:
+                                a = self.minasA_dt[(i[0] - self.grosor - 5 , i[1])]
+                                self.descubrir((i[0] - self.grosor - 5 , i[1]))
+                                if a == 0:
+                                    self.ejecucion((i[0] - self.grosor - 5 , i[1]))                      #Si el valor de la casilla es 0 repite la ejecucion con esa casilla
+                            if (i[0] - self.grosor - 5 ,i[1] - self.grosor - 5 ) in self.minas_d:
+                                a = self.minasA_dt[(i[0] - self.grosor - 5 ,i[1] - self.grosor - 5 )]
+                                self.descubrir((i[0] - self.grosor - 5 ,i[1] - self.grosor - 5 ))
+                                if a == 0:
+                                    self.ejecucion((i[0] - self.grosor - 5 ,i[1] - self.grosor - 5 ))     #Si el valor de la casilla es 0 repite la ejecucion con esa casilla   
+                            if (i[0], i[1] - self.grosor - 5 ) in self.minasA_dt:
+                                a = self.minasA_dt[(i[0], i[1] - self.grosor - 5 )]
+                                self.descubrir((i[0], i[1] - self.grosor - 5 ))
+                                if a == 0:
+                                    self.ejecucion((i[0], i[1] - self.grosor - 5 ))                      #Si el valor de la casilla es 0 repite la ejecucion con esa casilla
+                            if (i[0] + self.grosor + 5 ,i[1] - self.grosor - 5 ) in self.minas_d:
+                                a = self.minasA_dt[(i[0] + self.grosor + 5 ,i[1] - self.grosor - 5 )]
+                                self.descubrir((i[0] + self.grosor + 5 ,i[1] - self.grosor - 5 ))
+                                if a == 0:
+                                    self.ejecucion((i[0] + self.grosor + 5 ,i[1] - self.grosor - 5 ))     #Si el valor de la casilla es 0 repite la ejecucion con esa casilla
+        break
+        
+def Tiempo(self, t1)
+    pos =(self.centro[0] - 200, self.centro[1] + (self.grosor + 5) * (self.ancho/2) +15
+    t2 = time.perf_counter()
+    t = str(int(t2-t1))
+    t = self.temp.render("Tiempo : {0} sec".format(t), 1, (255,255,0))
+    pygame.draw.rect(self.ventana, (0,0,0), (pos[0], pos[1], 200, self.grosor))
+    self.ventana.blit(t, (pos))
+def Respuestas(self):
+  for i in self.minas_d:
+      if self.minas_d[i] == True and self.estado[i] == False:
+          pos = [i[0], i[1]]
+          self.ventana.blit(self.mina, pos)
+      if self.estado[i] == True and self.minas_d[i] == False:
+        pygame.draw.line(self.ventana, (0,0,0), (i[0], i[1]), (i[0] + self.grosor, i[1] + self.grosor), (5))
+        pygame.draw.line(self.ventana, (0,0,0), (i[0] + self.grosor, i[1]), (i[0], i[1] + self.grosor), (5))
 /////////////////////////////////////////////////////////////////////
 
 
 
 
-bomb = 0
-bomb1 = 0
-bomb2 = 0
-bomb3 = 0 
-bombo4 = 0
-
-def Bombran ():
-bomb = random.randrange():
-bomb1 = random.randrange():
-bomb2 = ramdom.randrange():
-bomb3 = ramdom.randrange():
-bombo4 = ramdom.randrange():
-
-print("las bombas se ubican en estos lugares")
-print(bomb)
-print(bomb1)
-print(bomb2)
-print(bomb3)
-print(bomb4)
-def casillas  ():
-  
-def banderas ():
-  global bandera
-  bandera = True 
-banderaImg=PhotoImage(file="img/bandera.png")
-banderaImgSlot=PhotoImage(file="img/banderaSlot.png")
-def ponerbandera():
-
-  if bandera and banderasbomba>0:
-    banderasbomba = banderasbomba-1
-    contadorBanderas.config(text="Banderas disponibles: " + str(banderasDisponibles))
-    Botones[Espacio].config(image=banderaImgSlot, width=64, height=65)
-    print("La bandera se puso en")
-    print (Espacio)
-    bandera = False
-    #contador y poner
-contadorBanderas=Label(frame, text="Banderas disponibles: " + str(banderasbomba), font=("Arial 15"))
-contadorBanderas.grid(column=6, row=0, columnspan=5)
-Teclaband=Button(frame, text=" ", image=banderaImg, command=lambda:presionarBandera())
-Teclaband.grid(column=5, row=0)
     
 
   
