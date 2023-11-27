@@ -14,7 +14,7 @@ white = (255, 255, 255)
 brown = (139, 69, 19)
 
 # Cargar la imagen de fondo
-bg_image = pygame.image.load('yes.jpg')
+bg_image = pygame.image.load('yes.png')
 bg_image = pygame.transform.scale(bg_image, (screen_width, screen_height))
 
 # Clase para los botones
