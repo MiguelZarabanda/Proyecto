@@ -27,4 +27,22 @@ while run:
   pygaame.draw.rect(game.ventana, (0,0,0), (pos_abajo[0] + 100, pos_abajo[1], game.grosor * 20, 30))
   game.ventana.blit(msg_banderas, (pos_abajo[0] + 100,pos_abajo[1]))
   
+  if game.Nbanderas == game.Mbanderas:
+      msg = game.msg.render("victoria", 1, (255,255, 0))
+      pygame.draw.rect(juego.ventana, (0,0,0), (pos_arriba[0], pos_arriba[1], game.grosor * 10,30))
+      game.ventana.blit(msg, pos_arriba)
+      game.Respuesta()
+      pygame.display.update()
+      juega = False
+  elif not game.est:
+    msg = game.msg.render("Perdiste", 1, (255,255,0))
+    pygame.draw.rect(juego.ventana, (0,0,0), (pos_arriba[0], pos_arriba[1], game.grosor * 10, 30))
+    game.Respuesta()
+    pygame.display.update()
+    juega = False
+  else:
+    juego.Tiempo(t1)
+    pygame.display.update()
+pygame.quit()    
+    
 
