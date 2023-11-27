@@ -22,5 +22,9 @@ while run:
                 x = juego.safe(pos)                                                                                 #Ejecuta el metodo safe, si se ejecuta adecuadamente retorna 1 y no se vuelve a hacer
             game.ejecucion(pos)
         if event.button == 3:
-            juego.Poner(pos)
+            juego.Poner_QuitarBand(pos)
+  msg_banderas = game.temp.render("Banderas: {0}" .format(game.Fbanderas), 1, (255,255,0))
+  pygaame.draw.rect(game.ventana, (0,0,0), (pos_abajo[0] + 100, pos_abajo[1], game.grosor * 20, 30))
+  game.ventana.blit(msg_banderas, (pos_abajo[0] + 100,pos_abajo[1]))
   
+
