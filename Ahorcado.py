@@ -342,6 +342,7 @@ def inicio():
             Inicio.blit(MarcoSelect, (449+(166-130)/2, 199))
         elif TiposPalabra == 2:
             Inicio.blit(MarcoSelect, (615+(166-130)/2, 199))
+        elif TiposPalabra == 3:
             Inicio.blit(MarcoSelect, (782+(166-130)/2, 199))
         elif TiposPalabra == 4:
             Inicio.blit(MarcoSelect, (449+(166-130)/2, 299))
