@@ -50,7 +50,7 @@ def Tablero(Palabra, Adivinadas):
             Tablero+="_"
     print(Tablero)
 
-def Victoria():    
+def Victoria(Palabra):    
     pygame.init()
 
     ventana = pygame.display.set_mode((1200, 635))
@@ -60,8 +60,10 @@ def Victoria():
     Fondo1 = pygame.transform.scale(Fondo1, (1200, 635))
     Fuente1 = pygame.font.SysFont("Monocraft", 80)
     Fuente3 = pygame.font.SysFont("Monocraft", 20)
+    Fuente4 = pygame.font.SysFont("Monocraft", 60)
     MarcoG = pygame.image.load("MarcoG.png")
     Reiniciar = pygame.Rect(0 + (1200 - 150)/2, 370, 150, 50)
+    Lapalabra = Fuente4.render(f"La palabra era {Palabra}", True, (0, 0, 0))
     
     while True:
         clock.tick(FPS)   
@@ -86,11 +88,12 @@ def Victoria():
         texto19 = Fuente3.render("Reiniciar", True, (0, 0, 0))
         ventana.blit(texto19, ((0+(1200-150)/2)+(Reiniciar.width-texto19.get_width())/2, 
                             370+(Reiniciar.height-texto19.get_height())/2))
+        ventana.blit(Lapalabra, (0+(1200-Lapalabra.get_width())/2, 200))
         ventana.blit(MarcoG, (0 + (1200 - 150)/2, 370, 150, 50))
 
         pygame.display.flip()
 
-def Derrota():    
+def Derrota(Palabra):    
     pygame.init()
 
     ventana = pygame.display.set_mode((1200, 635))
@@ -100,8 +103,10 @@ def Derrota():
     Fondo1 = pygame.transform.scale(Fondo1, (1200, 635))
     Fuente1 = pygame.font.SysFont("Monocraft", 80)
     Fuente3 = pygame.font.SysFont("Monocraft", 20)
+    Fuente4 = pygame.font.SysFont("Monocraft", 60)
     MarcoG = pygame.image.load("MarcoG.png")
     Reiniciar = pygame.Rect(0 + (1200 - 150)/2, 370, 150, 50)
+    Lapalabra = Fuente4.render(f"La palabra era {Palabra}", True, (0, 0, 0))
     
     while True:
         clock.tick(FPS)   
@@ -126,6 +131,7 @@ def Derrota():
         texto19 = Fuente3.render("Reiniciar", True, (0, 0, 0))
         ventana.blit(texto19, ((0+(1200-150)/2)+(Reiniciar.width-texto19.get_width())/2, 
                             370+(Reiniciar.height-texto19.get_height())/2))
+        ventana.blit(Lapalabra, (0+(1200-Lapalabra.get_width())/2, 200))
         ventana.blit(MarcoG, (0 + (1200 - 150)/2, 370, 150, 50))
 
         pygame.display.flip()
@@ -532,11 +538,11 @@ def inicio():
                         Ganador = False
                         break
                 if Ganador:
-                    Victoria()
+                    Victoria(Pal)
                     
 
                 if Ahorcado == 7:
-                    Derrota()
+                    Derrota(Pal)
                         
                 pygame.display.flip()
 
